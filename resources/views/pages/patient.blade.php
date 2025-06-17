@@ -580,14 +580,29 @@
         }
 
         .status-confirmed {
-            background: rgba(56, 182, 161, 0.12);
-            color: var(--success);
+            background-color: #d4edda;
+            color: #155724;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-weight: bold;
         }
 
         .status-pending {
-            background: rgba(236, 201, 75, 0.12);
-            color: var(--warning);
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-weight: bold;
         }
+
+        .status-refused {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+
 
         /* Doctors List */
         .doctor-list {
@@ -1181,8 +1196,13 @@
                                         <div class="appointment-info">
                                             <h4>{{ optional($appointment->doctor)->name ?? 'Médecin inconnu' }}</h4>
                                             <p><i class="fas fa-stethoscope"></i> {{ optional($appointment->doctor)->specialty ?? 'Spécialité inconnue' }}</p>
-                                            <span class="appointment-status status-confirmed">
-                                        {{ ucfirst($appointment->status) }}</span>
+                                        <span class="appointment-status 
+                                            {{ $appointment->status === 'accepté' ? 'status-confirmed' : 
+                                            ($appointment->status === 'refusé' ? 'status-refused' : 
+                                            ($appointment->status === 'en attente' ? 'status-pending' : '')) 
+                                            }}">
+                                            {{ ucfirst($appointment->status) }}
+                                        </span>
                                         </div>
                                     </li>
                                     @empty

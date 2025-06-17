@@ -386,6 +386,15 @@
                                 <div class="appointment-status status-{{ $appointment->status }}">
                                     {{ ucfirst($appointment->status) }}
                                 </div>
+                               {{-- <div> --}}
+                                    {{-- <a href="{{ route('appointment.cancel', $appointment->id) }}"
+                                    onclick="return confirm('Êtes-vous sûr(e) de vouloir annuler ce rendez-vous ?')"
+                                    class="text-red-500 hover:underline">
+                                        Annuler le rendez-vous
+                                    </a>
+                                </div> --}}
+
+
                             </div>
                             
                             <div class="appointment-details">

@@ -206,5 +206,14 @@ public function contact()
 {
     return view('patient.contact'); // ou la vue que tu souhaites afficher
 }
+public function cancel($id)
+{
+    $appointment = Appointment::findOrFail($id);
+    $appointment->status = 'refusé'; // ou 'annulée' si tu préfères
+    $appointment->save();
+
+    return redirect()->back()->with('success', 'Le rendez-vous a été annulé.');
+}
+
 
 }
